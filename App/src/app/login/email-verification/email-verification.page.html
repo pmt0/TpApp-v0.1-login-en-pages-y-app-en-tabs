@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title style="text-align: center;">Verficiación de email</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col size="12">
+          <ion-item *ngIf="!emailVerified">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <p>Por favor verifique su correo.</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button expand="block" type="submit" (click)="resendEmail()">Enviar email nuevamente</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <div class="reenviar-link">
+            <p>¿Ya verificaste tu email? <a [routerLink]="['/login']">Inicia Sesión</a></p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

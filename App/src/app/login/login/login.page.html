@@ -1,0 +1,118 @@
+<!-- <ion-content [fullscreen]="true">
+  <div>
+    <ion-title class="title">Bienvenid@</ion-title>
+    <p class="subTitle">Entra a tu cuenta</p>
+  </div>
+
+  <form [formGroup]="loginForm">
+    <div class="ion-padding">
+
+      <ion-item>
+        <ion-input formControlName="email" placeholder="email" style="color: #818181;" class="input">
+        </ion-input>
+        <ion-icon name="person-outline" style="color: #818181;"></ion-icon>
+      </ion-item>
+
+
+      <div *ngIf="this.loginForm.controls?.['email'].touched && this.loginForm.controls?.['email'].invalid">
+
+        <ion-text *ngIf="errorControl.email.errors?.required" class="errorInput" color="danger">
+          Email es requerido.</ion-text>
+
+        <ion-text *ngIf="errorControl.email.errors?.pattern" class="errorInput" color="danger">
+          Ingrese email valido.</ion-text>
+
+        <ion-text *ngIf="errorControl.fullname.errors?.required" class="errorInput" color="danger">
+          Nombre es requerido.</ion-text>
+
+
+      </div>
+
+
+      <ion-item>
+        <ion-input formControlName="password" placeholder="contraseña" style="color: #818181;"
+          class="input"></ion-input>
+        <ion-icon name="lock-closed-outline" style="color: #818181;"></ion-icon>
+      </ion-item>
+      <div>
+        <div class="forgotPassword">
+          <a [routerLink]="['/password-reset']" style="color:#FFC33F">Olvide mi contraseña</a>
+        </div>
+        <div class="signupLink">
+          <p>No tenes cuenta?<a style="color:#FFC33F" [routerLink]="['/sign-up']">Crear cuenta</a></p>
+        </div>
+      </div>
+      <ion-fab vertical="bottom" horizontal="end" style="margin-bottom: 30px;">
+        <ion-fab-button (click)="emailLogin($event)">
+          <ion-icon name="chevron-forward"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </div>
+  </form>
+
+</ion-content> -->
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title style="text-align: center;">¡Bienvenid@!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <form [formGroup]="loginForm" 
+          (ngSubmit)="emailLogin($event)">
+      <ion-grid [fixed]="true">
+        <ion-row>
+          <ion-col size="15">
+            <ion-item>
+              <ion-input 
+              formControlName="email" label="Email" 
+              labelPlacement="stacked" type="email"
+                placeholder="email@dominio.com" required></ion-input>
+              <ion-icon name="person"></ion-icon>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid [fixed]="true">
+        <ion-row>
+          <ion-col size="15">
+            <ion-item>
+              <ion-input formControlName="password" label="Contraseña" labelPlacement="stacked"
+                type="password" placeholder="Al menos 8 carácteres" required></ion-input>
+              <ion-icon name="lock-closed"></ion-icon>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="15">
+            <div class="passwordResetLink">
+              <a [routerLink]="['/password-reset']">¿Olvidaste tu contraseña?</a>
+            </div>
+          </ion-col>
+          <ion-col size="15">
+            <ion-button expand="block" type="submit">Ingresar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="15">
+          <ion-button expand="block" (click)="googleLogin()">Iniciar Sesión con Google</ion-button>
+        </ion-col>
+        <ion-col size="15">
+          <div class="signupLink">
+            <p>¿No tenes una cuenta? <a [routerLink]="['/sign-up']">Crear cuenta</a></p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+
+<!-- generar email-verification page @ src/app/login -->

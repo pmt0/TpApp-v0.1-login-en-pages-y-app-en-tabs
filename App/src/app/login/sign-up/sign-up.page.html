@@ -1,0 +1,69 @@
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <ion-title class="title">Bienvenid@</ion-title>
+    <p class="subTitle">Ingresa los datos para crear tu cuenta</p>
+  </div>
+
+  <form [formGroup]="regForm" novalidate>
+
+    <div class="ion-padding">
+
+      <ion-item>
+        <ion-input formControlName="fullname" placeholder="name" style="color: #818181;" class="input"></ion-input>
+        <ion-icon name="person-outline" style="color: #818181;"></ion-icon>
+      </ion-item>
+
+
+      <div *ngIf="this.regForm.controls?.['fullname'].touched && this.regForm.controls?.['fullname'].invalid">
+        <ion-text *ngIf="errorControl.fullname.errors?.required">
+          Nombre es requerido.
+        </ion-text>
+      </div>
+
+      <ion-item>
+        <ion-input formControlName="email" placeholder="email" style="color: #818181;" class="input"></ion-input>
+        <ion-icon name="person-outline" style="color: #818181;"></ion-icon>
+      </ion-item>
+
+      <div *ngIf="this.regForm.controls?.['email'].touched && this.regForm.controls?.['email'].invalid">
+        <ion-text *ngIf="errorControl.email.errors?.required">
+          Email es requerido.
+        </ion-text>
+        <ion-text *ngIf="errorControl.email.errors?.pattern">
+          Email tiene que ser valido.
+        </ion-text>
+      </div>
+
+      <ion-item>
+        <ion-input formControlName="password" placeholder="contraseña" style="color: #818181;"
+          class="input"></ion-input>
+        <ion-icon name="lock-closed-outline" style="color: #818181;"></ion-icon>
+      </ion-item>
+
+      <!-- <div *ngIf="this.regForm.controls?.['password'].touched && this.regForm.controls?['password'].invalid">
+          <ion-text *ngIf="errorControl.password.errors?.required">
+            Contraseña es requerido.
+          </ion-text>
+
+          <ion-text *ngIf="errorControl.password.errors?.pattern">
+            Contraseña tiene que tener 8 caracteres incluyendo una mayuscula y un numero.
+          </ion-text>
+        </div> -->
+
+      <div class="signinLink">
+        <p>Ya tenes cuenta? <a style="color: #FFC33F;" [routerLink]="['/login']">Entrar</a></p>
+      </div>
+
+    </div>
+
+    <ion-fab vertical="bottom" horizontal="end" style="margin-bottom: 30px;">
+      <ion-fab-button (click)="signUp()">
+        <ion-icon name="chevron-forward"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+
+
+  </form>
+
+</ion-content>
